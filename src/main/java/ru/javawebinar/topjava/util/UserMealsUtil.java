@@ -29,9 +29,8 @@ public class UserMealsUtil {
         //Calculate calories per day
         Map<LocalDate,Integer> MapCalories = new HashMap<>();
         for (UserMeal meal : meals){
-            if (MapCalories.containsKey(meal.getDateTime().toLocalDate())){
-                MapCalories.merge(meal.getDateTime().toLocalDate(),meal.getCalories(), Integer::sum);
-            }else {MapCalories.put(meal.getDateTime().toLocalDate(),meal.getCalories());}
+            MapCalories.putIfAbsent(meal.getDateTime().toLocalDate(),meal.getCalories());
+            MapCalories.merge(meal.getDateTime().toLocalDate(),meal.getCalories(), Integer::sum);
         }
         //Create result list
         List<UserMealWithExcess> userMealWithExcesses =  new ArrayList<>();
