@@ -38,10 +38,10 @@ public class UserMealsUtil {
         List<UserMealWithExcess> userMealWithExcesses = new ArrayList<>();
         for (UserMeal meal : meals) {
             if (TimeUtil.isBetweenHalfOpen(LocalTime.from(meal.getDateTime()), startTime, endTime)) {
-                userMealWithExcesses.add(new UserMealWithExcess(meal.getDateTime()
-                        , meal.getDescription()
-                        , meal.getCalories()
-                        , mapCalories.get(meal.getDateTime().toLocalDate()) > caloriesPerDay));
+                userMealWithExcesses.add(new UserMealWithExcess(meal.getDateTime(),
+                        meal.getDescription(),
+                        meal.getCalories(),
+                        mapCalories.get(meal.getDateTime().toLocalDate()) > caloriesPerDay));
             }
         }
         return userMealWithExcesses;
@@ -54,10 +54,10 @@ public class UserMealsUtil {
                 .peek(o1 -> mapCalories.merge(o1.getDateTime().toLocalDate(), o1.getCalories(), Integer::sum))
                 .collect(Collectors.toList()).stream()
                 .filter(o1 -> TimeUtil.isBetweenHalfOpen(o1.getDateTime().toLocalTime(), startTime, endTime))
-                .forEach(o1 -> result.add(new UserMealWithExcess(o1.getDateTime()
-                        , o1.getDescription()
-                        , o1.getCalories()
-                        , mapCalories.get(o1.getDateTime().toLocalDate()) > caloriesPerDay)));
+                .forEach(o1 -> result.add(new UserMealWithExcess(o1.getDateTime(),
+                        o1.getDescription(),
+                        o1.getCalories(),
+                        mapCalories.get(o1.getDateTime().toLocalDate()) > caloriesPerDay)));
         return result;
     }
 }
