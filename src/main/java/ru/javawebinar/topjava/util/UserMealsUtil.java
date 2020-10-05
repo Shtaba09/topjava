@@ -59,3 +59,5 @@ public class UserMealsUtil {
                         o1.getCalories(),
                         mapCalories.get(o1.getDateTime().toLocalDate()) > caloriesPerDay)));
         return result;
+    }
+}
