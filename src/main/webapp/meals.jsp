@@ -1,12 +1,14 @@
-<dependency>
-    <groupId>javax.servlet</groupId>
-    <artifactId>jstl</artifactId>
-    <version>1.2</version>
-</dependency>
+<%--
+  Created by IntelliJ IDEA.
+  User: Asus
+  Date: 06.10.2020
+  Time: 20:24
+  To change this template use File | Settings | File Templates.
+--%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>MEALS</title>
+    <title>MEALS LIST</title>
 </head>
 <body>
 
